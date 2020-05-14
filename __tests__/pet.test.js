@@ -21,5 +21,7 @@ describe('growUp', () => {
         pet.growUp();
     
         expect(pet.age).toEqual(1);
+        expect(pet.hunger).toEqual(5);
+        expect(pet.fitness).toEqual(7);
     });
 });
