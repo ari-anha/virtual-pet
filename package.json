@@ -1,0 +1,15 @@
+{
+  "name": "virtual-pet",
+  "version": "1.0.0",
+  "description": "Create a virtual pet using JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Arianha Bayley",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  },
+  "dependencies": {}
+}
