@@ -30,4 +30,19 @@ Pet.prototype.feed = function() {
     }
 }
 
+Pet.prototype.checkup = function() {
+    const basicFitness = 3;
+    const starving = 5;
+
+    if (this.fitness < basicFitness && this.hunger >= starving) {
+        return "I am hungry AND I need a swim"
+    } else if (this.fitness < basicFitness) {
+        return "I need a swim";
+    } else if (this.hunger >= starving) {
+        return "I am hungry";
+    } else {
+        return "I feel great!";
+    }
+}
+
 module.exports = Pet;

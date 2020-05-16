@@ -64,3 +64,45 @@ describe('feed', () => {
         expect(pet.hunger).toEqual(0);
     });
 });
+
+describe('checkup', () => {
+    it('returns a string when fitness is less than 3 and hunger is equal to or greater than 5', () => {
+        const pet = new Pet('Ursula');
+
+        pet.fitness = 1
+        pet.hunger = 7;
+        pet.checkup();
+
+        expect(pet.checkup()).toEqual("I am hungry AND I need a swim");
+    });
+
+    it('returns a string when fitness is less than 3', () => {
+        const pet = new Pet('Ursula');
+
+        pet.fitness = 1;
+        pet.hunger = 1;
+        pet.checkup();
+
+        expect(pet.checkup()).toEqual("I need a swim");
+    });
+
+    it('returns a string when hunger is equal to or greater than 5', () => {
+        const pet = new Pet('Ursula');
+
+        pet.fitness = 6;
+        pet.hunger = 9;
+        pet.checkup();
+
+        expect(pet.checkup()).toEqual("I am hungry");
+    });
+
+    it('returns a string when fitness is equal to or greater than 3 and hunger is less than 5', () => {
+        const pet = new Pet('Ursula');
+
+        pet.fitness = 10;
+        pet.hunger = 0;
+        pet.checkup();
+
+        expect(pet.checkup()).toEqual("I feel great!");
+    });
+});
