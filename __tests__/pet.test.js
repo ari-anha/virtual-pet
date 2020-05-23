@@ -142,12 +142,10 @@ describe('checkup', () => {
 
     it('throws an error if the pet is not alive', () => {
         const pet = new Pet('Ursula');
-
         pet.fitness = 0;
         pet.hunger = 10;
         pet.age = 30;
-        pet.checkup();
-
-        expect(pet.checkup()).toThrow("Your pet is no longer alive :(");
+      
+        expect(() => pet.checkup()).toThrow("Your pet is no longer alive :(");
     });
 });
