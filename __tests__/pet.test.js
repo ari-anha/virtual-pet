@@ -14,6 +14,24 @@ describe('constructor', () => {
     });
 });
 
+describe('isAlive', () => {
+    it('returns true if the pet is alive',() => {
+        const pet = new Pet('Ursula')
+        pet.age = 11;
+        pet.hunger = 6;
+        pet.fitness = 7;
+        expect(pet.isAlive).toBe(true)
+      });
+
+      it('returns false if the pet is dead',() => {
+        const pet = new Pet('Ursula')
+        pet.age = 30;
+        pet.hunger = 10;
+        pet.fitness = 0;
+        expect(pet.isAlive).toBe(false)
+      });
+});
+
 describe('growUp', () => {
     it('increments the age by 1', () => {
         const pet = new Pet('Ursula');
@@ -43,6 +61,14 @@ describe('swim', () => {
 
         expect(pet.fitness).toEqual(10);
     });
+
+    it('throws an error if the pet is not alive', () => {
+        const pet = new Pet('Ursula');
+
+        pet.fitness = 0;
+
+        expect(() => pet.swim()).toThrow('Your pet is no longer alive :(');
+    });
 });
 
 describe('feed', () => {
@@ -62,6 +88,14 @@ describe('feed', () => {
         pet.feed();
 
         expect(pet.hunger).toEqual(0);
+    });
+
+    it('throws an error if the pet is not alive', () => {
+        const pet = new Pet('Ursula');
+
+        pet.hunger = 12;
+
+        expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
     });
 });
 
@@ -104,5 +138,16 @@ describe('checkup', () => {
         pet.checkup();
 
         expect(pet.checkup()).toEqual("I feel great!");
+    });
+
+    it('throws an error if the pet is not alive', () => {
+        const pet = new Pet('Ursula');
+
+        pet.fitness = 0;
+        pet.hunger = 10;
+        pet.age = 30;
+        pet.checkup();
+
+        expect(pet.checkup()).toThrow("Your pet is no longer alive :(");
     });
 });
